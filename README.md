@@ -31,7 +31,7 @@ To achieve marks in the higher mark boundaries you should be aiming to implement
 Welcome to Ai's Vending Machine!
 
 Code | Item          | Price  | Stock
----------------------------------    
+#---------------------------------    
 A1   | Chocolate Bar | $1.5   | 10   
 A2   | Chips        | $1.0   | 15    
 B1   | Bottled Water | $0.8   | 20
@@ -78,7 +78,7 @@ Would you like to buy another item? (yes/no): yes
 Welcome to Ai's Vending Machine!
 
 Code | Item          | Price  | Stock
----------------------------------
+#---------------------------------
 A1   | Chocolate Bar | $1.5   | 8
 A2   | Chips        | $1.0   | 14
 B1   | Bottled Water | $0.8   | 19
@@ -101,7 +101,7 @@ Would you like to buy another item? (yes/no): yes
 Welcome to Ai's Vending Machine!
 
 Code | Item          | Price  | Stock
----------------------------------
+#---------------------------------
 A1   | Chocolate Bar | $1.5   | 8
 A2   | Chips        | $1.0   | 13
 B1   | Bottled Water | $0.8   | 19
@@ -127,7 +127,7 @@ Thank you for using Ai's Vending Machine!
 Welcome to Ai's Vending Machine!
 
 Code | Item          | Price  | Stock
----------------------------------
+#---------------------------------
 A1   | Chocolate Bar | $1.5   | 8
 A2   | Chips        | $1.0   | 13
 B1   | Bottled Water | $0.8   | 19
