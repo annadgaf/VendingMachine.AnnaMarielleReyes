@@ -1,5 +1,5 @@
 ## The Brief
-# Youser task is to create a Vending Machine program using the Python programming language.
+# Your task is to create a Vending Machine program using the Python programming language.
 # The program should demonstrate your knowledge of programming and make use of the techniques introduced over the course of the module.
 # Your application should be accompanied by a development document (1,000 - 1,500 words).
 
@@ -25,23 +25,29 @@
 ## Input:
 
 def display_menu(items):
-    print("\nWelcome to Ai's Vending Machine!\n")
-    print("Code | Item          | Price  | Stock")
-    print("---------------------------------")
+    print("\n--- Welcome to the Ultimate Vending Experience! ---\n")
+    print("Code | Item             | Price  | Stock")
+    print("-----------------------------------------")
     for code, item in items.items():
-        print(f"{code:<4} | {item['name']:<12} | ${item['price']:<5} | {item['stock']}")
+        print(f"{code:<4} | {item['name']:<15} | AED {item['price']:<5} | {item['stock']}")
 
 def insert_money(balance):
     while True:
         try:
-            print(f"\nCurrent balance: ${balance:.2f}")
-            amount = float(input("Enter additional money (e.g., 0.50, 1.00) or 0 to skip: $"))
+            print(f"\nYour current balance is: AED {balance:.2f}")
+            amount = float(input("Add money (e.g., 0.50, 1.00) or 0 to continue: AED "))
             if amount >= 0:
                 return balance + amount
             else:
-                print("Please insert a positive amount.")
+                print("Please enter a positive amount.")
         except ValueError:
             print("Invalid input. Please enter a valid amount.")
+
+def suggest_item(items, category):
+    print("\nSuggested items from the same category:")
+    for code, item in items.items():
+        if item['category'] == category and item['stock'] > 0:
+            print(f"- {item['name']} (AED {item['price']:.2f})")
 
 def select_item(items, balance):
     while True:
@@ -52,39 +58,209 @@ def select_item(items, balance):
                 if balance >= item['price']:
                     balance -= item['price']
                     item['stock'] -= 1
-                    print(f"Dispensing {item['name']}... Enjoy and have a nice day!")
-                    print(f"Remaining balance: ${balance:.2f}")
+                    print(f"\nDispensing {item['name']}... Enjoy!")
+                    print(f"Remaining balance: AED {balance:.2f}")
+                    suggest_item(items, item['category'])
+                    return balance
                 else:
-                    print(f"Insufficient balance. {item['name']} costs ${item['price']:.2f}.")
+                    print(f"\nYou need AED {item['price'] - balance:.2f} more to buy {item['name']}.")
                     return balance
             else:
-                print(f"Sorry, {item['name']} is out of stock.")
+                print(f"\nSorry, {item['name']} is out of stock.")
                 return balance
         else:
             print("Invalid code. Please try again.")
 
 def vending_machine():
     items = {
-        "A1": {"name": "Chocolate Bar", "price": 1.50, "stock": 10},
-        "A2": {"name": "Chips", "price": 1.00, "stock": 15},
-        "B1": {"name": "Bottled Water", "price": 0.80, "stock": 20},
-        "B2": {"name": "Soda Can", "price": 1.20, "stock": 12},
-        "C1": {"name": "Coffee", "price": 1.50, "stock": 8},
-        "C2": {"name": "Tea", "price": 1.30, "stock": 10},
+        "A1": {"name": "Chocolate Bar", "price": 1.50, "stock": 10, "category": "Snacks"},
+        "A2": {"name": "Chips", "price": 1.00, "stock": 15, "category": "Snacks"},
+        "B1": {"name": "Water Bottle", "price": 0.80, "stock": 20, "category": "Drinks"},
+        "B2": {"name": "Soda Can", "price": 1.20, "stock": 12, "category": "Drinks"},
+        "C1": {"name": "Coffee", "price": 1.50, "stock": 8, "category": "Hot Drinks"},
+        "C2": {"name": "Tea", "price": 1.30, "stock": 10, "category": "Hot Drinks"},
     }
     balance = 0.0
 
+    print("\nHello! Let's make your vending experience special!")
     while True:
         display_menu(items)
         balance = insert_money(balance)
         balance = select_item(items, balance)
-        more = input("\nWould you like to buy another item? (yes/no): ").lower()
+        more = input("\nDo you want to buy another item? (yes/no): ").lower()
         if more != "yes":
-            print(f"Returning change: ${balance:.2f}")
-            print("\nThank you for using Ai's Vending Machine!")
+            print(f"\nReturning your change: AED {balance:.2f}")
+            print("\nThank you for choosing the Ultimate Vending Machine. See you next time!")
+            break
 
 if __name__ == "__main__":
     vending_machine()
 
 ## Output:
 
+# Hello! Let's make your vending experience special! 
+#
+# --- Welcome to the Ultimate Vending Experience! ---
+# 
+# Code | Item             | Price  | Stock
+# -----------------------------------------
+# A1   | Chocolate Bar   | AED 1.5   | 10
+# A2   | Chips           | AED 1.0   | 15
+# B1   | Water Bottle    | AED 0.8   | 20
+# B2   | Soda Can        | AED 1.2   | 12
+# C1   | Coffee          | AED 1.5   | 8
+# C2   | Tea             | AED 1.3   | 10
+# 
+# Your current balance is: AED 0.00
+# Add money (e.g., 0.50, 1.00) or 0 to continue: AED 10
+#
+# Enter the code of the item you want to purchase: a1
+#
+# Dispensing Chocolate Bar... Enjoy!
+# Remaining balance: AED 8.50
+#
+# Suggested items from the same category:    
+# - Chocolate Bar (AED 1.50)
+# - Chips (AED 1.00)
+# 
+# Do you want to buy another item? (yes/no): yes
+# 
+# --- Welcome to the Ultimate Vending Experience! ---
+# 
+# Code | Item             | Price  | Stock
+# -----------------------------------------
+# A1   | Chocolate Bar   | AED 1.5   | 9
+# A2   | Chips           | AED 1.0   | 15
+# B1   | Water Bottle    | AED 0.8   | 20
+# B2   | Soda Can        | AED 1.2   | 12
+# C1   | Coffee          | AED 1.5   | 8
+# C2   | Tea             | AED 1.3   | 10
+#
+# Your current balance is: AED 8.50
+# Add money (e.g., 0.50, 1.00) or 0 to continue: AED 0
+# 
+# Enter the code of the item you want to purchase: A2
+#
+# Dispensing Chips... Enjoy!
+# Remaining balance: AED 7.50
+# 
+# Suggested items from the same category:
+# - Chocolate Bar (AED 1.50)
+# - Chips (AED 1.00)
+# 
+# Do you want to buy another item? (yes/no): yes
+# 
+# --- Welcome to the Ultimate Vending Experience! ---
+# 
+# Code | Item             | Price  | Stock
+# -----------------------------------------
+# A1   | Chocolate Bar   | AED 1.5   | 9
+# A2   | Chips           | AED 1.0   | 14
+# B1   | Water Bottle    | AED 0.8   | 20
+# B2   | Soda Can        | AED 1.2   | 12
+# C1   | Coffee          | AED 1.5   | 8
+# C2   | Tea             | AED 1.3   | 10
+# 
+# Your current balance is: AED 7.50
+# Add money (e.g., 0.50, 1.00) or 0 to continue: AED b1
+# Invalid input. Please enter a valid amount.
+# 
+# Your current balance is: AED 7.50
+# Add money (e.g., 0.50, 1.00) or 0 to continue: AED 0
+# 
+# Enter the code of the item you want to purchase: b1
+# 
+# Dispensing Water Bottle... Enjoy!
+# Remaining balance: AED 6.70
+# 
+# Suggested items from the same category:
+# - Water Bottle (AED 0.80)
+# - Soda Can (AED 1.20)
+# 
+# Do you want to buy another item? (yes/no): yes
+# 
+# --- Welcome to the Ultimate Vending Experience! ---
+# 
+# Code | Item             | Price  | Stock
+# -----------------------------------------
+# A1   | Chocolate Bar   | AED 1.5   | 9
+# A2   | Chips           | AED 1.0   | 14
+# B1   | Water Bottle    | AED 0.8   | 19
+# B2   | Soda Can        | AED 1.2   | 12
+# C1   | Coffee          | AED 1.5   | 8
+# C2   | Tea             | AED 1.3   | 10
+# 
+# Your current balance is: AED 6.70
+# Add money (e.g., 0.50, 1.00) or 0 to continue: AED 0
+# 
+# Enter the code of the item you want to purchase: b2
+# 
+# Dispensing Soda Can... Enjoy!
+# Remaining balance: AED 5.50
+# 
+# Suggested items from the same category:
+# - Water Bottle (AED 0.80)
+# - Soda Can (AED 1.20)
+# 
+# Do you want to buy another item? (yes/no): yes
+# 
+# --- Welcome to the Ultimate Vending Experience! ---
+# 
+# Code | Item             | Price  | Stock
+# -----------------------------------------
+# A1   | Chocolate Bar   | AED 1.5   | 9
+# A2   | Chips           | AED 1.0   | 14
+# B1   | Water Bottle    | AED 0.8   | 19
+# B2   | Soda Can        | AED 1.2   | 11
+# C1   | Coffee          | AED 1.5   | 8
+# C2   | Tea             | AED 1.3   | 10
+# 
+# Your current balance is: AED 5.50
+# Add money (e.g., 0.50, 1.00) or 0 to continue: AED 0
+# 
+# Enter the code of the item you want to purchase: C1
+# 
+# Dispensing Coffee... Enjoy!
+# Remaining balance: AED 4.00
+# 
+# Suggested items from the same category:
+# - Coffee (AED 1.50)
+# - Tea (AED 1.30)
+# 
+# Do you want to buy another item? (yes/no): yes
+# 
+# --- Welcome to the Ultimate Vending Experience! ---
+# 
+# Code | Item             | Price  | Stock
+# -----------------------------------------
+# A1   | Chocolate Bar   | AED 1.5   | 9
+# A2   | Chips           | AED 1.0   | 14
+# B1   | Water Bottle    | AED 0.8   | 19
+# B2   | Soda Can        | AED 1.2   | 11
+# C1   | Coffee          | AED 1.5   | 7
+# C2   | Tea             | AED 1.3   | 10
+# 
+# Your current balance is: AED 4.00
+# Add money (e.g., 0.50, 1.00) or 0 to continue: AED C3
+# Invalid input. Please enter a valid amount.
+# 
+# Your current balance is: AED 4.00
+# Add money (e.g., 0.50, 1.00) or 0 to continue: AED 0
+# 
+# Enter the code of the item you want to purchase: C3
+# Invalid code. Please try again.
+# 
+# Enter the code of the item you want to purchase: c2
+# 
+# Dispensing Tea... Enjoy!
+# Remaining balance: AED 2.70
+# 
+# Suggested items from the same category:
+# - Coffee (AED 1.50)
+# - Tea (AED 1.30)
+# 
+# Do you want to buy another item? (yes/no): no
+# 
+# Returning your change: AED 2.70
+# 
+# Thank you for choosing the Ultimate Vending Machine. See you next time!
