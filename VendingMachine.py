@@ -25,7 +25,7 @@
 ## Input:
 
 def display_menu(items):
-    print("\n--- Welcome to Ai's Vending Experience! ---\n")
+    print("\n--- Welcome to Ai's Vending Machine! ---\n")
     print("Code | Item             | Price  | Stock")
     print("-----------------------------------------")
     for code, item in items.items():
@@ -49,6 +49,8 @@ def suggest_item(items, current_item):
         "Tea": "Cookies",
         "Water Bottle": "Chips",
         "Soda Can": "Chocolate Bar",
+        "Green Tea": "Biscuits",
+        "Energy Drink": "Chips",
     }
     suggestion = suggestions.get(current_item['name'])
     if suggestion:
@@ -87,8 +89,13 @@ def vending_machine():
         "B2": {"name": "Soda Can", "price": 1.20, "stock": 12, "category": "Drinks"},
         "C1": {"name": "Coffee", "price": 1.50, "stock": 8, "category": "Hot Drinks"},
         "C2": {"name": "Tea", "price": 1.30, "stock": 10, "category": "Hot Drinks"},
+        "C3": {"name": "Green Tea", "price": 1.70, "stock": 6, "category": "Hot Drinks"},
         "D1": {"name": "Biscuits", "price": 2.00, "stock": 5, "category": "Snacks"},
         "D2": {"name": "Cookies", "price": 1.80, "stock": 7, "category": "Snacks"},
+        "E1": {"name": "Energy Drink", "price": 2.50, "stock": 10, "category": "Drinks"},
+        "E2": {"name": "Fruit Juice", "price": 2.20, "stock": 12, "category": "Drinks"},
+        "F1": {"name": "Protein Bar", "price": 3.00, "stock": 8, "category": "Health Snacks"},
+        "F2": {"name": "Granola Bar", "price": 2.80, "stock": 10, "category": "Health Snacks"},
     }
     balance = 0.0
 
@@ -109,31 +116,36 @@ if __name__ == "__main__":
 ## Output:
 
 # Hello! Let's make your vending experience special!
-#
-# --- Welcome to Ai's Vending Experience! ---
 # 
-# Code | Item             | Price  | Stock   
-# -----------------------------------------  
-# A1   | Chocolate Bar   | AED 1.5   | 10    
+# --- Welcome to Ai's Vending Machine! --- 
+# 
+# Code | Item             | Price  | Stock 
+# -----------------------------------------
+# A1   | Chocolate Bar   | AED 1.5   | 10  
 # A2   | Chips           | AED 1.0   | 15
 # B1   | Water Bottle    | AED 0.8   | 20
 # B2   | Soda Can        | AED 1.2   | 12
 # C1   | Coffee          | AED 1.5   | 8
 # C2   | Tea             | AED 1.3   | 10
+# C3   | Green Tea       | AED 1.7   | 6
 # D1   | Biscuits        | AED 2.0   | 5
 # D2   | Cookies         | AED 1.8   | 7
+# E1   | Energy Drink    | AED 2.5   | 10
+# E2   | Fruit Juice     | AED 2.2   | 12
+# F1   | Protein Bar     | AED 3.0   | 8
+# F2   | Granola Bar     | AED 2.8   | 103
 # 
 # Your current balance is: AED 0.00
-# Add money (e.g., 0.50, 1.00) or 0 to continue: AED 20
+# Add money (e.g., 0.50, 1.00) or 0 to continue: AED 30
 # 
-# Enter the code of the item you want to purchase: a1
+# Enter the code of the item you want to purchase: A1
 # 
 # Dispensing Chocolate Bar from Snacks... Enjoy!
-# Remaining balance: AED 18.50
+# Remaining balance: AED 28.50
 # 
 # Do you want to buy another item? (yes/no): yes
 # 
-# --- Welcome to Ai's Vending Experience! ---
+# --- Welcome to Ai's Vending Machine! ---
 # 
 # Code | Item             | Price  | Stock
 # -----------------------------------------
@@ -143,20 +155,25 @@ if __name__ == "__main__":
 # B2   | Soda Can        | AED 1.2   | 12
 # C1   | Coffee          | AED 1.5   | 8
 # C2   | Tea             | AED 1.3   | 10
+# C3   | Green Tea       | AED 1.7   | 6
 # D1   | Biscuits        | AED 2.0   | 5
 # D2   | Cookies         | AED 1.8   | 7
+# E1   | Energy Drink    | AED 2.5   | 10
+# E2   | Fruit Juice     | AED 2.2   | 12
+# F1   | Protein Bar     | AED 3.0   | 8
+# F2   | Granola Bar     | AED 2.8   | 10
 # 
-# Your current balance is: AED 18.50
-# Add money (e.g., 0.50, 1.00) or 0 to continue: AED 0
+# Your current balance is: AED 28.50
+# Add money (e.g., 0.50, 1.00) or 0 to continue: AED 5
 # 
 # Enter the code of the item you want to purchase: a2
 # 
 # Dispensing Chips from Snacks... Enjoy!
-# Remaining balance: AED 17.50
+# Remaining balance: AED 32.50
 # 
 # Do you want to buy another item? (yes/no): yes
 # 
-# --- Welcome to Ai's Vending Experience! ---
+# --- Welcome to Ai's Vending Machine! ---
 # 
 # Code | Item             | Price  | Stock
 # -----------------------------------------
@@ -166,100 +183,30 @@ if __name__ == "__main__":
 # B2   | Soda Can        | AED 1.2   | 12
 # C1   | Coffee          | AED 1.5   | 8
 # C2   | Tea             | AED 1.3   | 10
+# C3   | Green Tea       | AED 1.7   | 6
 # D1   | Biscuits        | AED 2.0   | 5
 # D2   | Cookies         | AED 1.8   | 7
+# E1   | Energy Drink    | AED 2.5   | 10
+# E2   | Fruit Juice     | AED 2.2   | 12
+# F1   | Protein Bar     | AED 3.0   | 8
+# F2   | Granola Bar     | AED 2.8   | 10
 # 
-# Your current balance is: AED 17.50
-# Add money (e.g., 0.50, 1.00) or 0 to continue: AED B1
+# Your current balance is: AED 32.50
+# Add money (e.g., 0.50, 1.00) or 0 to continue: AED b1
 # Invalid input. Please enter a valid amount.
 # 
-# Your current balance is: AED 17.50
+# Your current balance is: AED 32.50
 # Add money (e.g., 0.50, 1.00) or 0 to continue: AED 0
 # 
-# Enter the code of the item you want to purchase: B1
+# Enter the code of the item you want to purchase: b1
 # 
 # Dispensing Water Bottle from Drinks... Enjoy!
-# Remaining balance: AED 16.70
+# Remaining balance: AED 31.70
 # 
 # Suggested item: Chips (AED 1.00)
 # 
-# Do you want to buy another item? (yes/no): yes
-# 
-# --- Welcome to Ai's Vending Experience! ---
-# 
-# Code | Item             | Price  | Stock
-# -----------------------------------------
-# A1   | Chocolate Bar   | AED 1.5   | 9
-# A2   | Chips           | AED 1.0   | 14
-# B1   | Water Bottle    | AED 0.8   | 19
-# B2   | Soda Can        | AED 1.2   | 12
-# C1   | Coffee          | AED 1.5   | 8
-# C2   | Tea             | AED 1.3   | 10
-# D1   | Biscuits        | AED 2.0   | 5
-# D2   | Cookies         | AED 1.8   | 7
-# 
-# Your current balance is: AED 16.70
-# Add money (e.g., 0.50, 1.00) or 0 to continue: AED 0
-# 
-# Enter the code of the item you want to purchase: C1
-# 
-# Dispensing Coffee from Hot Drinks... Enjoy!
-# Remaining balance: AED 15.20
-# 
-# Suggested item: Biscuits (AED 2.00)
-# 
-# Do you want to buy another item? (yes/no): yes
-# 
-# --- Welcome to Ai's Vending Experience! ---
-# 
-# Code | Item             | Price  | Stock
-# -----------------------------------------
-# A1   | Chocolate Bar   | AED 1.5   | 9
-# A2   | Chips           | AED 1.0   | 14
-# B1   | Water Bottle    | AED 0.8   | 19
-# B2   | Soda Can        | AED 1.2   | 12
-# C1   | Coffee          | AED 1.5   | 7
-# C2   | Tea             | AED 1.3   | 10
-# D1   | Biscuits        | AED 2.0   | 5
-# D2   | Cookies         | AED 1.8   | 7
-# 
-# Your current balance is: AED 15.20
-# Add money (e.g., 0.50, 1.00) or 0 to continue: AED D1
-# Invalid input. Please enter a valid amount.
-# 
-# Your current balance is: AED 15.20
-# Add money (e.g., 0.50, 1.00) or 0 to continue: AED 0
-# 
-# Enter the code of the item you want to purchase: d1
-# 
-# Dispensing Biscuits from Snacks... Enjoy!
-# Remaining balance: AED 13.20
-# 
-# Do you want to buy another item? (yes/no): yes
-# 
-# --- Welcome to Ai's Vending Experience! ---
-# 
-# Code | Item             | Price  | Stock
-# -----------------------------------------
-# A1   | Chocolate Bar   | AED 1.5   | 9
-# A2   | Chips           | AED 1.0   | 14
-# B1   | Water Bottle    | AED 0.8   | 19
-# B2   | Soda Can        | AED 1.2   | 12
-# C1   | Coffee          | AED 1.5   | 7
-# C2   | Tea             | AED 1.3   | 10
-# D1   | Biscuits        | AED 2.0   | 4
-# D2   | Cookies         | AED 1.8   | 7
-# 
-# Your current balance is: AED 13.20
-# Add money (e.g., 0.50, 1.00) or 0 to continue: AED 0
-# 
-# Enter the code of the item you want to purchase: d2
-# 
-# Dispensing Cookies from Snacks... Enjoy!
-# Remaining balance: AED 11.40
-# 
 # Do you want to buy another item? (yes/no): no
 # 
-# Returning your change: AED 11.40
+# Returning your change: AED 31.70
 # 
 # Thank you for choosing Ai's Vending Machine. See you next time!
