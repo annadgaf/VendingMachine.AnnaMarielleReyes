@@ -25,6 +25,7 @@
 ## Input:
 
 def display_menu(items):
+    # Display the vending machine menu with item codes, names, prices, and stock levels.
     print("\n--- Welcome to Ai's Vending Machine! ---\n")
     print("Code | Item             | Price  | Stock")
     print("-----------------------------------------")
@@ -32,6 +33,7 @@ def display_menu(items):
         print(f"{code:<4} | {item['name']:<15} | AED {item['price']:<5} | {item['stock']}")
 
 def insert_money(balance):
+    # Allow the user to insert money and add it to their balance.
     while True:
         try:
             print(f"\nYour current balance is: AED {balance:.2f}")
@@ -44,6 +46,7 @@ def insert_money(balance):
             print("Invalid input. Please enter a valid amount.")
 
 def suggest_item(items, current_item):
+    # Suggest an additional item to the user based on their current purchase.
     suggestions = {
         "Coffee": "Biscuits",
         "Tea": "Cookies",
@@ -60,6 +63,7 @@ def suggest_item(items, current_item):
                 break
 
 def select_item(items, balance):
+    # Allow the user to select an item and check if they have enough balance to purchase it.
     while True:
         code = input("\nEnter the code of the item you want to purchase: ").upper()
         if code in items:
@@ -82,6 +86,7 @@ def select_item(items, balance):
             print("Invalid code. Please try again.")
 
 def vending_machine():
+    # Main vending machine function to initialize items, handle user interaction, and manage balance.
     items = {
         "A1": {"name": "Chocolate Bar", "price": 1.50, "stock": 10, "category": "Snacks"},
         "A2": {"name": "Chips", "price": 1.00, "stock": 15, "category": "Snacks"},
@@ -101,9 +106,9 @@ def vending_machine():
 
     print("\nHello! Let's make your vending experience special!")
     while True:
-        display_menu(items)
-        balance = insert_money(balance)
-        balance = select_item(items, balance)
+        display_menu(items)  # Display the vending machine menu.
+        balance = insert_money(balance)  # Allow the user to add money to their balance.
+        balance = select_item(items, balance)  # Let the user select an item to purchase.
         more = input("\nDo you want to buy another item? (yes/no): ").lower()
         if more != "yes":
             print(f"\nReturning your change: AED {balance:.2f}")
