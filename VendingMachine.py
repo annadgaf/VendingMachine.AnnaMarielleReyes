@@ -26,6 +26,7 @@
 
 def display_menu(items):
     # Display the vending machine menu with item codes, names, prices, and stock levels.
+    # Reference: Example of vending machine UI (https://www.vending.com/)
     print("\n--- Welcome to Ai's Vending Machine! ---\n")
     print("Code | Item             | Price  | Stock")
     print("-----------------------------------------")
@@ -34,6 +35,7 @@ def display_menu(items):
 
 def insert_money(balance):
     # Allow the user to insert money and add it to their balance.
+    # Reference: Handling user input in Python (https://docs.python.org/3/library/functions.html#input)
     while True:
         try:
             print(f"\nYour current balance is: AED {balance:.2f}")
@@ -47,6 +49,7 @@ def insert_money(balance):
 
 def suggest_item(items, current_item):
     # Suggest an additional item to the user based on their current purchase.
+    # Reference: Cross-selling strategies (https://www.shopify.com/blog/cross-selling)
     suggestions = {
         "Coffee": "Biscuits",
         "Tea": "Cookies",
@@ -63,6 +66,7 @@ def suggest_item(items, current_item):
                 break
 
 def select_item(items, balance):
+    # Reference: Input validation in Python (https://realpython.com/python-input-output/)
     # Allow the user to select an item and check if they have enough balance to purchase it.
     while True:
         code = input("\nEnter the code of the item you want to purchase: ").upper()
@@ -86,7 +90,8 @@ def select_item(items, balance):
             print("Invalid code. Please try again.")
 
 def vending_machine():
-    # Main vending machine function to initialize items, handle user interaction, and manage balance.
+    # Main vending machine function to initialize items, handle user interaction, and manage balance.\
+    # Reference: Object-oriented vending machines (https://www.sciencedirect.com/topics/engineering/vending-machine)
     items = {
         "A1": {"name": "Chocolate Bar", "price": 1.50, "stock": 10, "category": "Snacks"},
         "A2": {"name": "Chips", "price": 1.00, "stock": 15, "category": "Snacks"},
