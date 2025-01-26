@@ -49,7 +49,7 @@ def insert_money(balance):
 
 def suggest_item(items, current_item):
     # Suggest an additional item to the user based on their current purchase.
-    # Reference: Cross-selling strategies (https://www.shopify.com/blog/cross-selling)
+    #Reference: https://github.com/python/cpython/blob/3.13/Lib/random.py
     suggestions = {
         "Coffee": "Biscuits",
         "Tea": "Cookies",
@@ -91,7 +91,6 @@ def select_item(items, balance):
 
 def vending_machine():
     # Main vending machine function to initialize items, handle user interaction, and manage balance.\
-    # Reference: Object-oriented vending machines (https://www.sciencedirect.com/topics/engineering/vending-machine)
     items = {
         "A1": {"name": "Chocolate Bar", "price": 1.50, "stock": 10, "category": "Snacks"},
         "A2": {"name": "Chips", "price": 1.00, "stock": 15, "category": "Snacks"},
